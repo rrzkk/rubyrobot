@@ -43,6 +43,6 @@ end
 
 
 
-#robot_class_test
-#input_reader_test
+robot_class_test
+input_reader_test
 robot_controller_test

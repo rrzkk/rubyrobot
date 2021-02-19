@@ -7,3 +7,19 @@ puts "`B` - move backward 1 unit"
 puts "`R` - turn right 90 degrees"
 puts "`L` - turn left 90 degrees"
 puts "Your command format should be like : F4,R2,B2,L3,B3 or F,R2,B2,L,B3"
+loop do 
+    moving_command = gets.chomp
+    result = robot_controller(robot,moving_command)
+    if result
+        puts  "Do you want another move? Y/N?"
+        another_move = "N"
+        loop do
+            another_move = gets.chomp
+            break if another_move == "N" || another_move == "Y" 
+            puts "I did not understand"
+        end
+        break if another_move == "N" 
+        puts "let's do it again! Please give me a command"
+    else puts "Wrong format, Please try again"
+    end
+end
