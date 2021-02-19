@@ -1,4 +1,5 @@
 require_relative "robot_class"
+require_relative "input_reader"
 
 def robot_class_test
     test_robot=Robot.new(0,0)
@@ -11,4 +12,17 @@ def robot_class_test
     puts (test_robot.get_min_distance_to_zero == 2)? "Successfully calculate the distance": "Fail to calculate the distance"
 end
 
+def input_reader_test
+    include Input_reader
+    if !verify_input("FFgt") && verify_input("F2") && !verify_input("BB") && !verify_input("B") && !verify_input("C2")
+        puts "Successfully verify the input"
+    end
+
+    split_result = split_input("F2")
+    if (split_result[:direction] == "F") && (split_result[:length] == 2)
+        puts "Succesfully split the input"
+    end
+end
+
 robot_class_test
+input_reader_test
