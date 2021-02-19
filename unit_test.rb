@@ -1,5 +1,6 @@
 require_relative "robot_class"
 require_relative "input_reader"
+require_relative "robot_controller"
 
 def robot_class_test
     test_robot=Robot.new(0,0)
@@ -33,5 +34,14 @@ def input_reader_test
     puts "Successfully split the user input" if split_user_input("F2,F3,B3,R2,L")[2] == {:direction=>"B", :length=>3}
 end
 
-#robot_class_test
+def robot_controller_test
+    test_robot=Robot.new(0,0)
+    robot_controller(test_robot,"F2,F3,B,R2,L")
+    puts (test_robot.position[:x]==1 && test_robot.position[:y]==4)? "Succesfully control the robot": "Fail to control the robot"
+end
+
+
+
+robot_class_test
 input_reader_test
+robot_controller_test

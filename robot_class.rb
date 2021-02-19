@@ -9,7 +9,7 @@ class Robot
         case direction
             when "F"
                 @position[:y] += length
-             when "B"
+            when "B"
                 @position[:y] -= length
             when "R"
                 @position[:x] += length

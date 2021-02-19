@@ -8,7 +8,11 @@ module Input_reader
     end
 
     def split_single_input(input)
-        move_command = {direction: input[0], length: input[1].to_i}
+        if (input.length == 1) && (["F","B","R","L"].include?(input))
+            move_command = {direction: input[0], length: 1}
+        else
+            move_command = {direction: input[0], length: input[1].to_i}
+        end
     end
 
     def verify_user_input(input)
