@@ -9,7 +9,8 @@ def robot_class_test
     test_robot.move("B",2)
     test_robot.move("R",1)
     test_robot.move("L",2)
-    puts (test_robot.position == {x: -1,y: -1})? "Successfully move to the right place": "Fail to move to right place"
+    puts (test_robot.position == {x: 0,y: -1, facing: "W"})? "Successfully move to the right place": "Fail to move to right place"
+    puts test_robot.get_min_distance_to_zero
     puts (test_robot.get_min_distance_to_zero == 2)? "Successfully calculate the distance": "Fail to calculate the distance"
 end
 
@@ -37,11 +38,11 @@ end
 def robot_controller_test
     test_robot=Robot.new(0,0)
     robot_controller(test_robot,"F2,F3,B,R2,L")
-    puts (test_robot.position[:x]==1 && test_robot.position[:y]==4)? "Succesfully control the robot": "Fail to control the robot"
+    puts (test_robot.position[:x]==0 && test_robot.position[:y]==4)? "Succesfully control the robot": "Fail to control the robot"
 end
 
 
 
-robot_class_test
-input_reader_test
+#robot_class_test
+#input_reader_test
 robot_controller_test
