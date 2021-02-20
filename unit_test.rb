@@ -1,7 +1,15 @@
+=begin
+    This file contains three tests:
+    robot_class_test,
+    input_reader_test
+    and robot_controller_test
+=end
+
 require_relative "robot_class"
 require_relative "input_reader"
 require_relative "robot_controller"
 
+# robot_class_test tests four public methods of robot_class
 def robot_class_test
     test_robot=Robot.new(0,0)
     puts (test_robot != nil)? "Successfully initiate the robot": "Fail to initiate the robot"
@@ -10,10 +18,10 @@ def robot_class_test
     test_robot.move("R",1)
     test_robot.move("L",2)
     puts (test_robot.position == {x: 0,y: -1, facing: "W"})? "Successfully move to the right place": "Fail to move to right place"
-    puts test_robot.get_min_distance_to_zero
-    puts (test_robot.get_min_distance_to_zero == 2)? "Successfully calculate the distance": "Fail to calculate the distance"
+    puts (test_robot.get_min_distance_to_zero == 1)? "Successfully calculate the distance": "Fail to calculate the distance"
 end
 
+# input_reader_test tests three public methods of input_reader, the verification test contains several test senarios
 def input_reader_test
     include Input_reader
     if !verify_single_input("FFgt") && verify_single_input("F2") && !verify_single_input("BB") && verify_single_input("B") && !verify_single_input("C2")
@@ -35,14 +43,14 @@ def input_reader_test
     puts "Successfully split the user input" if split_user_input("F2,F3,B3,R2,L")[2] == {:direction=>"B", :length=>3}
 end
 
+# robot_controller_test test the robot_controller unit
 def robot_controller_test
     test_robot=Robot.new(0,0)
     robot_controller(test_robot,"F2,F3,B,R2,L")
     puts (test_robot.position[:x]==0 && test_robot.position[:y]==4)? "Succesfully control the robot": "Fail to control the robot"
 end
 
-
-
+# Uncomment to run test
 robot_class_test
 input_reader_test
 robot_controller_test

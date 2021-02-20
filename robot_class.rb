@@ -1,3 +1,7 @@
+=begin
+    This is a robot class with position attribute and several other methods
+=end
+
 class Robot
     attr_reader :position
     def initialize(x,y,facing="N")
@@ -5,6 +9,7 @@ class Robot
     end
 
     public
+    # To change the robot's positon, turn or move
     def move(direction,length)
         case direction
             when "F"
@@ -31,11 +36,19 @@ class Robot
         end
     end
 
+    # To get the minimum distance from the current position to the (0,0) point
     public
     def get_min_distance_to_zero
-        return @position[:x].abs+@position[:y].abs + facing_origin(@position)
+        return @position[:x].abs+@position[:y].abs 
     end
 
+    # To get the minimum turns robot need to do to get back to (0,0)
+    public
+    def get_min_turns
+        return facing_origin(@position)
+    end
+
+    # To get the next facing direction after turning command
     private
     def turning(facing_array,current_facing)
         next_facing=current_facing
@@ -45,6 +58,7 @@ class Robot
         return next_facing
     end
 
+    # To find out the relation between facing direction and curren position, maybe used later for route calculation
     private
     def facing_origin(position)
         zero_step_1 = (position[:x] == 0) && (position[:facing] == "N") && (position[:y] <= 0)

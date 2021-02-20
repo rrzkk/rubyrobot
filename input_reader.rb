@@ -1,3 +1,11 @@
+=begin
+    This module contains four function:
+    verify_single_input(input): to verify input with format "F1" or "R" or "L3"
+    split_single_input(input): split "R" or "F1" to a hash with two keys: direction and length
+    verify_user_input(input): verify the user input with format "F1,R,L3,B5"
+    split_user_input(input): split the user input to several single inputs
+=end
+
 module Input_reader
     def verify_single_input(input)
         unless (input.length == 2) && (["F","B","R","L"].include?(input[0])) && input[1].match?(/[[:digit:]]/)
